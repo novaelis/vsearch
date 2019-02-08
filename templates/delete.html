@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<form method='POST' action='/delete_action'>
+<p>If you want to delete all log items, click this button:</p>
+<p><input value='Delete log items!' type='SUBMIT' name='submit_button'></p>
+<p>If you want to delete all user items, click this button:</p>
+<p><input value='Delete user items!' type='SUBMIT' name='submit_button'></p>
+</form>
+
+{% endblock %}
