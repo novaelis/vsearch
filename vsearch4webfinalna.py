@@ -31,7 +31,7 @@ def do_login() -> 'html':
             return render_template('login_user_dont_exist.html',
                                    the_title='ERROR LOGIN')
     elif request.form['submit_button'] == 'Sign up!':
-        insertovanje_usera_u_bazu(request)
+        insert_user_in_mysql(request)
         return render_template('confirmation_sign_up.html',
                                the_title = 'CONFIRMATION OF SIGN UP!',
                                the_username = username,
@@ -45,7 +45,7 @@ def does_exist_in_mysql(username: str, password: str) -> bool:
         answer = cursor.fetchall()
         return answer
 
-def insertovanje_usera_u_bazu(req: 'flash_request'):
+def insert_user_in_mysql(req: 'flash_request'):
     """Ubacivanje usera u bazu tako sto se preuzme request objekat"""
     with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = """insert into user
